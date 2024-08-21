@@ -1,0 +1,48 @@
+<div class="container">
+  <h2>Product Feedback</h2>
+
+  <form [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input id="name" formControlName="name" class="form-control" />
+      <div *ngIf="feedbackForm.get('name')?.invalid && feedbackForm.get('name')?.touched">
+        <small class="text-danger">Name is required and must be at least 3 characters long.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input id="email" formControlName="email" type="email" class="form-control" />
+      <div *ngIf="feedbackForm.get('email')?.invalid && feedbackForm.get('email')?.touched">
+        <small class="text-danger">A valid email is required.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="rating">Rating:</label>
+      <select id="rating" formControlName="rating" class="form-control">
+        <option value="">Select Rating</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <div *ngIf="feedbackForm.get('rating')?.invalid && feedbackForm.get('rating')?.touched">
+        <small class="text-danger">Rating is required.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="comments">Comments:</label>
+      <textarea id="comments" formControlName="comments" class="form-control"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="feedbackForm.invalid">Submit Feedback</button>
+  </form>
+
+    <!-- Success Message -->
+  <div *ngIf="isSubmitted" class="alert alert-success">
+    Feedback provided successfully!
+  </div>
+</div>

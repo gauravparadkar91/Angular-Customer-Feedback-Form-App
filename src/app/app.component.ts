@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+// src/app/app.component.ts
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  standalone: true,
+  imports: [FeedbackComponent]
 })
 export class AppComponent {
-  title = 'CourseManagement';
+  title = 'feedback-form-app';
 }
